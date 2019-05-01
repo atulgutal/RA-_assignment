@@ -1,22 +1,11 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-//var session = require("express-session");
 var cookieParser = require("cookie-parser");
 var cors = require("cors");
 app.set("view engine", "ejs");
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-
-// app.use(
-//   session({
-//     secret: "cmpe273_kafka_passport_mongo",
-//     resave: false,
-//     saveUninitialized: false,
-//     duration: 60 * 60 * 1000,
-//     activeDuration: 5 * 60 * 1000
-//   })
-// );
 
 app.use(bodyParser.json());
 
@@ -48,7 +37,6 @@ app.get("/api/graph", function(req, res) {
   request(options, function(error, response, body) {
     if (error) throw new Error(error);
     res.json(body);
-    //  console.log(body);
   });
 });
 
